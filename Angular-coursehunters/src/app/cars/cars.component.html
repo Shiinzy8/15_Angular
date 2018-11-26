@@ -15,7 +15,9 @@
 <!--<input type="text" class="form-control" (input)="onKeyUp(myInp.value)" #myInp/>-->
 <!-- что б отлавливать только нажатие какой то кнопки-->
 <input type="text" class="form-control" (keyup.enter)="onKeyUp($event)"/>
-<p> {{ inputText }}</p>
+<p> {{ inputTextFirst }}</p>
+<input type="text" class="form-control" [(ngModel)]="inputTextSecond">
+<p> {{ inputTextSecond }}</p>
 <app-car></app-car>
 <app-car></app-car>
 <app-car></app-car>

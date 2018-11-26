@@ -8,7 +8,8 @@ import { Component } from '@angular/core';
 export class CarsComponent {
   // canAddCar = false;
   addCarStatus = '';
-  inputText = '';
+  inputTextFirst = '';
+  inputTextSecond = 'Default text';
 
   constructor() {
     // setTimeout(() => {
@@ -24,7 +25,7 @@ export class CarsComponent {
   // onKeyUp(value: string) {
     console.log(event);
     // if (event.code === 'Enter') {
-    this.inputText = event.target.value;
+    this.inputTextFirst = event.target.value;
     // }
     // this.inputText = (<HTMLInputElement>event.target).value;
     // if (event.keyCode === 37 ) {

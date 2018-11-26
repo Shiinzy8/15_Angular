@@ -1,0 +1,21 @@
+<!-- [] -  говорят ангуляру что мы будем связывать этот аттрибут с данными -->
+<!-- {{ не следят за изменением данных }} -->
+<!-- [] это одностороннее связывание, поменялось в кооде поменялось в шаблоне -->
+<!--<button [disabled]="!canAddCar" class="btn btn-primary">-->
+<!--() это тип связывания из шаблона в код, передаем название метода при click-->
+<input type="text" class="form-control" [(ngModel)]="carName">
+<button class="btn btn-primary" (click)="addCar()">
+  Add a car
+</button>
+<!-- * это деректива -->
+<p *ngIf="addCarStatus; else successStatus">Car is added</p>
+<ng-template #successStatus>
+  <p >Car isn't added</p>
+</ng-template>
+
+<!-- второй вариант но он не очень удобный -->
+<!--<p *ngIf="!addCarStatus">Car isn't added</p>-->
+
+<hr>
+<app-car></app-car>
+<app-car></app-car>

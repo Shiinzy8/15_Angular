@@ -1,6 +1,9 @@
-<p>
-  cars works!
-</p>
+<!--[] -  говорят ангуляру что мы будем связывать этот аттрибут с данными-->
+<!--{{ не следят за изменением данных }}-->
+<button [disabled]="!canAddCar" class="btn btn-primary">
+  Add a car
+</button>
+<hr>
 <app-car></app-car>
 <app-car></app-car>
 <app-car></app-car>

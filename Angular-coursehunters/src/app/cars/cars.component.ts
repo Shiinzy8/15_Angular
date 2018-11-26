@@ -6,11 +6,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./cars.component.scss']
 })
 export class CarsComponent {
-  canAddCar = false;
+  // canAddCar = false;
+  addCarStatus = '';
+  inputText = '';
 
   constructor() {
-    setTimeout(() => {
-      this.canAddCar = true;
-    }, 4000);
+    // setTimeout(() => {
+    //   this.canAddCar = true;
+    // }, 4000);
+  }
+
+  addCar() {
+    this.addCarStatus = 'Car is added';
+  }
+
+  onKeyUp(event) {
+  // onKeyUp(value: string) {
+    console.log(event);
+    // if (event.code === 'Enter') {
+    this.inputText = event.target.value;
+    // }
+    // this.inputText = (<HTMLInputElement>event.target).value;
+    // if (event.keyCode === 37 ) {
+    // this.inputText = value;
   }
 }

@@ -3,21 +3,19 @@
 <!-- [] это одностороннее связывание, поменялось в кооде поменялось в шаблоне -->
 <!--<button [disabled]="!canAddCar" class="btn btn-primary">-->
 <!--() это тип связывания из шаблона в код, передаем название метода при click-->
+<input type="text" class="form-control" [(ngModel)]="carName">
 <button class="btn btn-primary" (click)="addCar()">
   Add a car
 </button>
-<p>{{ addCarStatus }}</p>
-<hr>
+<!-- * это деректива -->
+<p *ngIf="addCarStatus; else successStatus">Car is added</p>
+<ng-template #successStatus>
+  <p >Car isn't added</p>
+</ng-template>
 
-<!--<input type="text" class="form-control" (keyup)="onKeyUp($event)"/>-->
-<!--<input type="text" class="form-control" (input)="onKeyUp($event)"/>-->
-<!-- #создали переменную занчение которой и передали в событие-->
-<!--<input type="text" class="form-control" (input)="onKeyUp(myInp.value)" #myInp/>-->
-<!-- что б отлавливать только нажатие какой то кнопки-->
-<input type="text" class="form-control" (keyup.enter)="onKeyUp($event)"/>
-<p> {{ inputTextFirst }}</p>
-<input type="text" class="form-control" [(ngModel)]="inputTextSecond">
-<p> {{ inputTextSecond }}</p>
-<app-car></app-car>
+<!-- второй вариант но он не очень удобный -->
+<!--<p *ngIf="!addCarStatus">Car isn't added</p>-->
+
+<hr>
 <app-car></app-car>
 <app-car></app-car>

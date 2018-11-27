@@ -1,15 +1,24 @@
 <p>Form for adding a car</p>
 <!-- событие onAddCar возникло в add-car всплыло сюда и вернуло нам имя и год авто-->
 <!-- мы вызвали метод updateCarsList в этом компоненте и добавили новое авто -->
+<hr>
 <app-add-car (onAddCar)="updateCarsList($event)"></app-add-car>
 <hr>
 
+<button class="btn-success btn" (click)="changeCarName()">
+  Change the name of the car
+</button>
+
 <div class="list-group">
   <!-- [carItem] - это способ передать переменную во внутрь компонента car.component.ts -->
-  <app-car class="list-group-item" *ngFor="let car of cars" [carItem]="car">
+  <app-car class="list-group-item" *ngFor="let car of cars" [carItem]="car" [name]="car.name">
     <h4 class="list-group-item-heading" #carName>Name: {{ car.name }}</h4>
     <p class="list-group-item-text">Year: {{ car.year }}</p>
   </app-car>
 </div>
+
+<button class="btn-danger btn" (click)="deleteCar()">
+  Delete the car
+</button>
 
 

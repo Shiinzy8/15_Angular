@@ -10,8 +10,8 @@ export class CarsComponent {
 
   // cars: [{name: string, year: number}] - определение переменной cars с типом массив объектов
   cars: {name: string, year: number}[] = [
-    {name: 'Mazda', year: 2011},
-    {name: 'Ford', year: 2012},
+    // {name: 'Mazda', year: 2011},
+    // {name: 'Ford', year: 2012},
     {name: 'BMW', year: 2013},
   ];
 
@@ -19,5 +19,13 @@ export class CarsComponent {
 
   updateCarsList(car: {name: string, year: number}) {
     this.cars.push(car);
+  }
+
+  changeCarName() {
+    this.cars[0].name = 'New ' + this.cars[0].name;
+  }
+
+  deleteCar() {
+    this.cars.splice(0, 1);
   }
 }

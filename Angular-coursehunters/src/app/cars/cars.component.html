@@ -7,6 +7,7 @@
 <button class="btn btn-primary" (click)="addCar()">
   Add a car
 </button>
+
 <!-- * это деректива -->
 <p *ngIf="addCarStatus; else successStatus">Car is added</p>
 <ng-template #successStatus>
@@ -17,5 +18,10 @@
 <!--<p *ngIf="!addCarStatus">Car isn't added</p>-->
 
 <hr>
-<app-car></app-car>
-<app-car></app-car>
+<app-car *ngFor="let car of cars"></app-car>
+
+<ul>
+  <li *ngFor="let item of items; let idx = index">
+    <h4>{{ idx + 1 }}</h4><b>{{ item.id }}</b> - <i>{{ item.name }}</i>
+  </li>
+</ul>

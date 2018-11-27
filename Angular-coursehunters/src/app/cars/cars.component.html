@@ -3,5 +3,13 @@
 <!-- мы вызвали метод updateCarsList в этом компоненте и добавили новое авто -->
 <app-add-car (onAddCar)="updateCarsList($event)"></app-add-car>
 <hr>
-<!-- [carItem] - это способ передать переменную во внутрь компонента car.component.ts -->
-<app-car *ngFor="let car of cars" [carItem]="car"></app-car>
+
+<div class="list-group">
+  <!-- [carItem] - это способ передать переменную во внутрь компонента car.component.ts -->
+  <app-car class="list-group-item" *ngFor="let car of cars" [carItem]="car">
+    <h4 class="list-group-item-heading" #carName>Name: {{ car.name }}</h4>
+    <p class="list-group-item-text">Year: {{ car.year }}</p>
+  </app-car>
+</div>
+
+

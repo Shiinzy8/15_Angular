@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, ContentChild, ElementRef, Input, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-car',
@@ -11,5 +11,11 @@ export class CarComponent {
 
   // tslint:disable-next-line:no-input-rename
   @Input('carItem') car: {name: string, year: number};
-  private carItem = false;
+  // мы таким способом получаем локальную референции потому что контент передаем через ng-content
+  @ContentChild('carName') carName: ElementRef;
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterViewInit() {
+    console.log(this.carName);
+  }
 }

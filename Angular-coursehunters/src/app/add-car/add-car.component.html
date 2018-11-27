@@ -1,0 +1,5 @@
+<!-- [(ngModel)] это двойное связывание для carName and carYear, что б данные передать в компонент -->
+<!-- так если и данные в компоненты поменяются отобразить их здесь -->
+<input type="text" class="form-control" [(ngModel)]="carName">
+<input type="text" class="form-control" [(ngModel)]="carYear">
+<button class="btn-primary btn" (click)="addCar()">Add car</button>

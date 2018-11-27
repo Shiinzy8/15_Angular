@@ -1,4 +1,10 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-add-car',
@@ -6,28 +12,26 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./add-car.component.scss']
 })
 export class AddCarComponent implements OnInit {
-
-  carName = '';
-  carYear = 2017;
   // это специальный тип для эмулаяции события, в <> данные которые он будет емитеть наружу
   // Output это грубо говоря передача данных наружу
 
   // tslint:disable-next-line:no-output-on-prefix no-output-rename
   @Output('onAddCar') carEmmiter = new EventEmitter<{name: string, year: number}>();
+  @ViewChild('carYearInput') carYearInput: ElementRef;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  addCar() {
+  addCar(carNameEl: HTMLInputElement) {
     this.carEmmiter.emit({
-      name: this.carName,
-      year: this.carYear
+      name: carNameEl.value,
+      year: +this.carYearInput.nativeElement.value
     });
 
     // этих два поля нужны что б в инпут после добавления сбрасывать на занчения по умолчанию
-    this.carName = '';
-    this.carYear = 2017;
+    carNameEl.value = '';
+    this.carYearInput.nativeElement.value = 2017;
   }
 }

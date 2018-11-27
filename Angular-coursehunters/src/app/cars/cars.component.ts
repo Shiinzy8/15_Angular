@@ -7,36 +7,25 @@ import { Component } from '@angular/core';
 })
 export class CarsComponent {
   carName = '';
-  addCarStatus = false;
-  cars = [
-    'Ford',
-    'Mazda',
-    'BMW',
-    'Bentley',
-    'Ferrari'
-  ];
-  dates = [
-    new Date(2017, 1, 1).toDateString(),
-    new Date(2017, 2, 2).toDateString(),
-    new Date(2017, 3, 3).toDateString(),
-    new Date(2017, 4, 4).toDateString(),
-    new Date(2017, 5, 5).toDateString()
+  carYear = 2017;
+
+  // cars: [{name: string, year: number}] - определение переменной cars с типом массив объектов
+  cars: {name: string, year: number}[] = [
+    {name: 'Mazda', year: 2011},
+    {name: 'Ford', year: 2012},
+    {name: 'BMW', year: 2013},
   ];
 
-
-  constructor() {
-    // setTimeout(() => {
-    //   this.canAddCar = true;
-    // }, 4000);
-  }
+  constructor() {}
 
   addCar() {
-    this.addCarStatus = true;
-    this.cars.push(this.carName);
-    this.carName = '';
-  }
+    this.cars.push({
+      name: this.carName,
+      year: this.carYear
+    });
 
-  // setBigCarText(car: string) {
-  //   return car.length > 4;
-  // }
+    // этих два поля нужны что б в инпут после добавления сбрасывать на занчения по умолчанию
+    this.carName = '';
+    this.carYear = 2017;
+  }
 }

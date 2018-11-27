@@ -1,49 +1,8 @@
-<!-- [] -  говорят ангуляру что мы будем связывать этот аттрибут с данными -->
-<!-- {{ не следят за изменением данных }} -->
-<!-- [] это одностороннее связывание, поменялось в кооде поменялось в шаблоне -->
-<!--<button [disabled]="!canAddCar" class="btn btn-primary">-->
-<!-- () это тип связывания из шаблона в код, передаем название метода при click -->
 <input type="text" class="form-control" [(ngModel)]="carName">
-<button class="btn btn-primary" (click)="addCar()">
-  Add a car
-</button>
-
-<!-- * это деректива -->
-<p *ngIf="addCarStatus; else successStatus">Car is added</p>
-<ng-template #successStatus>
-  <p >Car isn't added</p>
-</ng-template>
-
-<!-- второй вариант но он не очень удобный -->
-<!--<p *ngIf="!addCarStatus">Car isn't added</p>-->
+<input type="text" class="form-control" [(ngModel)]="carYear">
+<button class="btn-primary btn" (click)="addCar()">Add car</button>
 
 <hr>
-<!-- пример работы дерективы ngFor -->
-<!--<app-car *ngFor="let car of cars"></app-car>-->
-<!--<ul>-->
-  <!--<li *ngFor="let item of items; let idx = index">-->
-    <!--<h4>{{ idx + 1 }}</h4><b>{{ item.id }}</b> - <i>{{ item.name }}</i>-->
-  <!--</li>-->
-<!--</ul>-->
 
-<!--<ul>-->
-  <!--<li *ngFor="let car of cars; let idx = index">-->
-    <!--<div-->
-      <!--[ngStyle]="{'background-color': (idx + 1)%2 === 0 ? 'red' : 'green', color: 'white'}"-->
-      <!--[ngClass]="{'big-text': setBigCarText(car)}"-->
-    <!--&gt;-->
-      <!--<b>{{ idx + 1 }}</b> - {{ car }}-->
-    <!--</div>-->
-  <!--</li>-->
-<!--</ul>-->
-
-<ul>
-  <li *ngFor="let date of dates; let idx = index">
-    <div>
-      <!-- | это символ начала пайпа мы выбираем пайп, в данном случае date а потом можем его трансформировать -->
-      <!--<b>{{ idx + 1 }}</b> - {{ date | date:'short' }}-->
-      <!--<b>{{ idx + 1 }}</b> - {{ date | date:'medium' }}-->
-      <b>{{ idx + 1 }}</b> - {{ date | uppercase }}
-    </div>
-  </li>
-</ul>
+<!-- [carItem] - это способ передать переменную во внутрь компонента car.component.ts -->
+<app-car *ngFor="let car of cars" [carItem]="car"></app-car>

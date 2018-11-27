@@ -1,30 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  // selector так же можно задавать по разному
-  // selector: '[app-car]' - значит надо будет
-  // создавать не тег app-car а любой тег с таким аттрибутом
-  // selector: '.app-car' - создаем любой тег с таким классом
   selector: 'app-car',
   templateUrl: './car.component.html',
-  // либо templateUrl or template
-  // template: `
-  // <h2>Single car</h2>
-  // `,
-  // styleUrls массив где мы перечисляем пути до файлов css
   styleUrls: ['./car.component.scss']
-  // либо styleUrl or styles
-  // styles: [`
-  //   h2 {
-  //     color: fuchsia;
-  //   }
-  // `]
 })
 export class CarComponent {
-  carName = 'Ford';
-  carYear = 2001;
+  // @Input значит что данное поле входящее а внутреннее этого компонента
+  // так же можно в () передать название за которым надо следить
 
-  getName() {
-    return this.carName;
-  }
+  // tslint:disable-next-line:no-input-rename
+  @Input('carItem') car: {name: string, year: number};
+  private carItem = false;
 }

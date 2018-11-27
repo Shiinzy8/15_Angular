@@ -2,7 +2,7 @@
 <!-- {{ не следят за изменением данных }} -->
 <!-- [] это одностороннее связывание, поменялось в кооде поменялось в шаблоне -->
 <!--<button [disabled]="!canAddCar" class="btn btn-primary">-->
-<!--() это тип связывания из шаблона в код, передаем название метода при click-->
+<!-- () это тип связывания из шаблона в код, передаем название метода при click -->
 <input type="text" class="form-control" [(ngModel)]="carName">
 <button class="btn btn-primary" (click)="addCar()">
   Add a car
@@ -18,10 +18,21 @@
 <!--<p *ngIf="!addCarStatus">Car isn't added</p>-->
 
 <hr>
-<app-car *ngFor="let car of cars"></app-car>
+<!-- пример работы дерективы ngFor -->
+<!--<app-car *ngFor="let car of cars"></app-car>-->
+<!--<ul>-->
+  <!--<li *ngFor="let item of items; let idx = index">-->
+    <!--<h4>{{ idx + 1 }}</h4><b>{{ item.id }}</b> - <i>{{ item.name }}</i>-->
+  <!--</li>-->
+<!--</ul>-->
 
 <ul>
-  <li *ngFor="let item of items; let idx = index">
-    <h4>{{ idx + 1 }}</h4><b>{{ item.id }}</b> - <i>{{ item.name }}</i>
+  <li *ngFor="let car of cars; let idx = index">
+    <div
+      [ngStyle]="{'background-color': (idx + 1)%2 === 0 ? 'red' : 'green', color: 'white'}"
+      [ngClass]="{'big-text': setBigCarText(car)}"
+    >
+      <b>{{ idx + 1 }}</b> - {{ car }}
+    </div>
   </li>
 </ul>

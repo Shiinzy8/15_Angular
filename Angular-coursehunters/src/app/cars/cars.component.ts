@@ -15,6 +15,13 @@ export class CarsComponent {
     'Bentley',
     'Ferrari'
   ];
+  dates = [
+    new Date(2017, 1, 1).toDateString(),
+    new Date(2017, 2, 2).toDateString(),
+    new Date(2017, 3, 3).toDateString(),
+    new Date(2017, 4, 4).toDateString(),
+    new Date(2017, 5, 5).toDateString()
+  ];
 
 
   constructor() {
@@ -29,7 +36,7 @@ export class CarsComponent {
     this.carName = '';
   }
 
-  setBigCarText(car: string) {
-    return car.length > 4;
-  }
+  // setBigCarText(car: string) {
+  //   return car.length > 4;
+  // }
 }

@@ -26,13 +26,24 @@
   <!--</li>-->
 <!--</ul>-->
 
+<!--<ul>-->
+  <!--<li *ngFor="let car of cars; let idx = index">-->
+    <!--<div-->
+      <!--[ngStyle]="{'background-color': (idx + 1)%2 === 0 ? 'red' : 'green', color: 'white'}"-->
+      <!--[ngClass]="{'big-text': setBigCarText(car)}"-->
+    <!--&gt;-->
+      <!--<b>{{ idx + 1 }}</b> - {{ car }}-->
+    <!--</div>-->
+  <!--</li>-->
+<!--</ul>-->
+
 <ul>
-  <li *ngFor="let car of cars; let idx = index">
-    <div
-      [ngStyle]="{'background-color': (idx + 1)%2 === 0 ? 'red' : 'green', color: 'white'}"
-      [ngClass]="{'big-text': setBigCarText(car)}"
-    >
-      <b>{{ idx + 1 }}</b> - {{ car }}
+  <li *ngFor="let date of dates; let idx = index">
+    <div>
+      <!-- | это символ начала пайпа мы выбираем пайп, в данном случае date а потом можем его трансформировать -->
+      <!--<b>{{ idx + 1 }}</b> - {{ date | date:'short' }}-->
+      <!--<b>{{ idx + 1 }}</b> - {{ date | date:'medium' }}-->
+      <b>{{ idx + 1 }}</b> - {{ date | uppercase }}
     </div>
   </li>
 </ul>

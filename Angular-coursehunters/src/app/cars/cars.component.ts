@@ -6,8 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./cars.component.scss']
 })
 export class CarsComponent {
-  carName = '';
-  carYear = 2017;
 
   // cars: [{name: string, year: number}] - определение переменной cars с типом массив объектов
   cars: {name: string, year: number}[] = [
@@ -18,14 +16,7 @@ export class CarsComponent {
 
   constructor() {}
 
-  addCar() {
-    this.cars.push({
-      name: this.carName,
-      year: this.carYear
-    });
-
-    // этих два поля нужны что б в инпут после добавления сбрасывать на занчения по умолчанию
-    this.carName = '';
-    this.carYear = 2017;
+  updateCarsList(car: {name: string, year: number}) {
+    this.cars.push(car);
   }
 }

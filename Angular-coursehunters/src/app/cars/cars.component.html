@@ -1,8 +1,6 @@
-<input type="text" class="form-control" [(ngModel)]="carName">
-<input type="text" class="form-control" [(ngModel)]="carYear">
-<button class="btn-primary btn" (click)="addCar()">Add car</button>
-
+<!-- событие onAddCar возникло в add-car всплыло сюда и вернуло нам имя и год авто-->
+<!-- мы вызвали метод updateCarsList в этом компоненте и добавили новое авто -->
+<app-add-car (onAddCar)="updateCarsList($event)"></app-add-car>
 <hr>
-
 <!-- [carItem] - это способ передать переменную во внутрь компонента car.component.ts -->
 <app-car *ngFor="let car of cars" [carItem]="car"></app-car>

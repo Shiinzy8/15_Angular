@@ -2,8 +2,9 @@
   <div class="col-xs-8 col-xs-offset-2">
 
 
-
-    <h3 appBackground>{{ headerText }}</h3>
+    <!-- елси обернуть параметр в [] то в него передаем js код его надо обернуть в '' -->
+    <!-- елси параметр не оборачивать в [] то '' скобки не нужны -->
+    <h3 appBackground [hoverColor]="'yellow'" [defaultColor]="'blue'">{{ headerText }}</h3>
 
 
 

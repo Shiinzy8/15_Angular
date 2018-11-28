@@ -4,8 +4,15 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
   <div class="col-md-8 offset-md-2">
-    <h2>{{ name }}</h2>
-    <h2>{{ name | appPow:3:'=' }}</h2>
+    <input type="text" class="form-control" [(ngModel)]="searchCar">
+    <hr>
+    <ul class="list-group">
+      <li *ngFor="let car of cars | carFilter:searchCar:'name'; let i = index" class="list-group-item">
+        {{ i + 1 }} {{ car.name }} <i>{{ car.descr }}</i>
+      </li>
+    </ul>
+    <!--<h2>{{ name }}</h2>-->
+    <!--<h2>{{ name | appPow:3:'=' }}</h2>-->
     <!--<h2>{{ name | appPow:3 }}</h2>-->
     <!--<h2>{{ name | appPow:1 }}</h2>-->
     <!--<h2>{{ name | appPow:0 }}</h2>-->
@@ -48,6 +55,16 @@ import { Component } from '@angular/core';
   `
 })
 export class AppComponent {
+  searchCar = '';
+  cars = [
+    {name: 'Ford', descr: 'WPM 1'},
+    {name: 'Mazda', descr: 'WPM 2'},
+    {name: 'BMW', descr: 'WPM 3'},
+    {name: 'Audi', descr: 'WPM 4'},
+    {name: 'Bentley', descr: 'WPM 5'},
+    {name: 'Ferrari', descr: 'WPM 6'},
+  ];
+
   name = '2';
   pi = Math.PI;
   money = 350;

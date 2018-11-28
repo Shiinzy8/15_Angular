@@ -4,10 +4,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {PowPipe} from './pow.pipe';
+import { MyTestPipe } from './my-test.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
+    PowPipe,
+    MyTestPipe,
   ],
   imports: [
     BrowserModule,

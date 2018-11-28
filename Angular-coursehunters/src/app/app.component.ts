@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   template: `
   <div class="col-md-8 offset-md-2">
+    <h1>{{ asyncTitle | async }}</h1>
     <input type="text" class="form-control" [(ngModel)]="searchCar">
     <button class="btn btn-primary" (click)="addCar()">
       Add
@@ -67,6 +70,8 @@ export class AppComponent {
     {name: 'Bentley', descr: 'WPM 5'},
     {name: 'Ferrari', descr: 'WPM 6'},
   ];
+
+  asyncTitle = of('Async title 3 seconds').pipe(delay(3000));
 
   name = '2';
   pi = Math.PI;

@@ -6,8 +6,18 @@
     <!-- елси параметр не оборачивать в [] то '' скобки не нужны -->
     <h3 appBackground [hoverColor]="'yellow'" [defaultColor]="'blue'">{{ headerText }}</h3>
 
+    <ul class="list-group">
+      <li *ngFor="let item of items" (click)="onClick(item)" class="list-group-item">
+        {{ item }}
+      </li>
+    </ul>
 
-
+    <div [ngSwitch]="current">
+      <p *ngSwitchCase="items[0]">1</p>
+      <p *ngSwitchCase="items[1]">2</p>
+      <p *ngSwitchCase="items[2]">3</p>
+      <p *ngSwitchDefault>default</p>
+    </div>
 
   </div>
 </div>

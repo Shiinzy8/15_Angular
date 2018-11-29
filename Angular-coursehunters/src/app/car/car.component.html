@@ -1,4 +1,17 @@
-<p> {{'Name'}}: {{ getName() }}, Year: {{ carYear }}</p>
-<!--{{ эти скобки нужны для отображения строк, или всего что можно привести к строке }}-->
-<!--<b>{{ 10 + 20}}</b>-->
-<!--в этом примере ангуляр подсчитает результат и выведет его ввиде текста-->
+<div [ngClass]="getClass()">
+  <h4 [ngStyle]="{marginBottom: '20px'}">{{car.name}}</h4>
+  <div>
+    <button
+      class="btn btn-sm btn-primary"
+      [disabled]="car.isSold"
+      (click)="onAction('buy')"
+    >Купить
+    </button>
+    <button
+      class="btn btn-sm btn-default"
+      [disabled]="!car.isSold"
+      (click)="onAction('return')"
+    >Вернуть
+    </button>
+  </div>
+</div>

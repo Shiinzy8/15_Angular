@@ -1,6 +1,32 @@
-<div class="col-md-8 col-offset-md-2">
-  <app-car-add (onCarAdd)="addCarToList($event)"></app-car-add>
-  <div class="list-group">
-    <app-car *ngFor="let car of cars" [car]="car"></app-car>
-  </div>
+<div class="col-12 col-offset-2">
+  <form (ngSubmit)="submitForm(form)" #form="ngForm">
+  <!--<form (ngSubmit)="submitForm()" #form="ngForm">-->
+
+    <div class="form-group">
+      <label>Email
+        <input type="text" class="form-control" ngModel name="email">
+      </label>
+    </div>
+    <div class="form-group">
+      <label>Пароль
+        <input type="password" class="form-control" ngModel name="pass">
+      </label>
+    </div>
+    <div class="form-group">
+      <label>Выберите страну
+        <select class="form-control" ngModel name="country">
+          <option value="us">США</option>
+          <option value="gr">Германия</option>
+          <option value="ua">Украина</option>
+        </select>
+      </label>
+    </div>
+    <div class="radio" *ngFor="let ans of answers">
+      <label>
+        <input type="radio" [value]="ans.type" ngModel name="answer"> {{ans.text}}
+      </label>
+    </div>
+    <button class="btn btn-success" type="submit">Сохранить</button>
+
+  </form>
 </div>

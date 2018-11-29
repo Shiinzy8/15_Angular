@@ -1,29 +1,32 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  providers: []
 })
 export class AppComponent {
-  cars = [
+
+  // @ViewChild('form') form: NgForm;
+  answers = [
     {
-      name: 'Ford',
-      isSold: false
+      type: 'yes',
+      text: 'Yes'
     },
     {
-      name: 'Mazda',
-      isSold: true
-    },
-    {
-      name: 'Mercedes',
-      isSold: false
+      type: 'no',
+      text: 'No'
     }
   ];
 
-  addCarToList(carName: string) {
-    this.cars.push({
-      name: carName,
-      isSold: false
-    });
+  submitForm(form: NgForm) {
+    console.log(form);
+    console.log('form was submitted!');
   }
+
+  // submitForm() {
+  //   console.log(this.form);
+  // }
 }
+

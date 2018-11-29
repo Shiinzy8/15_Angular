@@ -5,21 +5,34 @@ import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styles: [`
-    .has-error {
-      border: 2px solid hotpink;
-    }
     form label {
       width: 100%;
+    }
+    form .has-error {
+      border: 2px solid mediumpurple;
     }
   `],
   providers: []
 })
-export class AppComponent {
-  @ViewChild('form') form: NgForm;
+export class AppComponent implements OnInit {
+  form: FormGroup;
 
-  defaultAnswer = 'no';
-  defaultCountry = 'us';
+  // @ViewChild('form') form: NgForm;
+  answers = [
+    {
+      type: 'yes',
+      text: 'Yes'
+    },
+    {
+      type: 'no',
+      text: 'No'
+    }
+  ];
 
+  passLength = 5;
+
+  // Validators.required без () потому что мы передаем метод а не вызываем
+  // bind нужен для того что б передать контекст, особенно если будет вызыватся в других классах
   ngOnInit(): void {
     this.form = new FormGroup({
       user: new FormGroup({
@@ -31,34 +44,8 @@ export class AppComponent {
     });
   }
 
-  submitForm() {
-    this.isSubmited = true;
-    this.formData = this.form.value;
-    console.log(this.form);
-    console.log('form was submitted!');
-    this.form.reset();
-  }
-
-  addRandomEmail() {
-    const randEmail = 'test@gmail.com';
-
-    // setValue перетирает все если пользователь вводил свои какие то данные
-    // this.form.setValue({
-    //   user: {
-    //     pass: '',
-    //     email: randEmail
-    //   },
-    //   country: '',
-    //   answer: ''
-    // });
-
-    // так мы заменим только поля группы user
-    this.form.form.patchValue({
-      user: {
-        pass: '',
-        email: randEmail
-      },
-    });
+  onSubmit() {
+    console.log('Submitted', this.form);
   }
 
   // должен ворзращать или ничего(если все ок) или объект{'errorCode': true}

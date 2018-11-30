@@ -8,10 +8,16 @@ import {NgForm} from '@angular/forms';
     .has-error {
       border: 2px solid hotpink;
     }
+    form label {
+      width: 100%;
+    }
   `],
   providers: []
 })
 export class AppComponent {
+
+  defaultAnswer = 'no';
+  defaultCountry = 'us';
 
   // @ViewChild('form') form: NgForm;
   answers = [

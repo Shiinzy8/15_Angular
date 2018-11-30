@@ -1,4 +1,4 @@
-<div class="col-12 col-offset-2">
+<div class="col-md-6 offset-md-3">
   <form (ngSubmit)="submitForm(form)" #form="ngForm">
   <!--<form (ngSubmit)="submitForm()" #form="ngForm">-->
 
@@ -33,7 +33,8 @@
       <label>Выберите страну
         <select
           class="form-control"
-          ngModel name="country"
+          [ngModel]="defaultCountry"
+          name="country"
           required
         >
           <option value="us">США</option>
@@ -47,7 +48,8 @@
         <input
           type="radio"
           [value]="ans.type"
-          ngModel name="answer"
+          [ngModel]="defaultAnswer"
+          name="answer"
           required
         > {{ans.text}}
       </label>

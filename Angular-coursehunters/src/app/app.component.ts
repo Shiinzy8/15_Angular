@@ -5,8 +5,8 @@ import {NgForm} from '@angular/forms';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styles: [`
-    input.ng-touched.ng-invalid {
-      border: 1px solid red;
+    .has-error {
+      border: 2px solid hotpink;
     }
   `],
   providers: []

@@ -22,8 +22,10 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      pass: new FormControl('', Validators.required),
+      user: new FormGroup({
+        email: new FormControl('', [Validators.required, Validators.email]),
+        pass: new FormControl('', Validators.required),
+      }),
       country: new FormControl('us'),
       answer: new FormControl('no')
     });

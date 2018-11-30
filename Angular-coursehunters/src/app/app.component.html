@@ -2,37 +2,19 @@
   <form (ngSubmit)="submitForm(form)" #form="ngForm">
   <!--<form (ngSubmit)="submitForm()" #form="ngForm">-->
 
-    <!-- такая группировка создаст новое поле в объекте формы в компоненте с указанным нами именем -->
-    <div ngModelGroup="user" #user="ngModelGroup">
-      <div class="form-group" [ngClass]="{'has-error': email.invalid && email.touched}">
-        <!-- # значит локальная референция -->
+    <div formGroupName="user">
+      <div class="form-group" [ngClass]="{'has-error': form.get('user.email').invalid && form.get('user.email').touched}">
         <label>Email
-          <input
-            type="text"
-            class="form-control"
-            ngModel
-            name="email"
-            required
-            email
-            #email="ngModel"
-          >
+          <input type="text" class="form-control" formControlName="email">
         </label>
-        <p *ngIf="email.invalid && email.touched">Enter correct email</p>
-        <button type="button" class="btn btn-primary" (click)="addRandomEmail()">Add random email</button>
+        <p *ngIf="form.get('user.email').invalid && form.get('user.email').touched">The email mustn't be empty</p>
       </div>
-      <div class="form-group" [ngClass]="{'has-error': pass.invalid && pass.touched}">
+      <div class="form-group" [ngClass]="{'has-error': form.get('user.pass').invalid && form.get('user.pass').touched}">
         <label>Пароль
-          <input
-            type="password"
-            class="form-control"
-            ngModel name="pass"
-            required
-            #pass="ngModel"
-          >
+          <input type="password" class="form-control" formControlName="pass">
         </label>
-        <p *ngIf="pass.invalid && pass.touched">Password can't be empty</p>
+        <p *ngIf="form.get('user.pass').invalid && form.get('user.pass').touched">The password mustn't be empty</p>
       </div>
-      <p *ngIf="user.invalid && user.touched">You input invalid user data</p>
     </div>
     <div class="form-group">
     <label>Выберите страну

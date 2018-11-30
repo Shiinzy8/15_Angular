@@ -15,9 +15,13 @@ import {NgForm} from '@angular/forms';
   providers: []
 })
 export class AppComponent {
+  @ViewChild('form') form: NgForm;
 
   defaultAnswer = 'no';
   defaultCountry = 'us';
+
+  formData = {}; // empty object
+  isSubmited = false;
 
   // @ViewChild('form') form: NgForm;
   answers = [
@@ -31,9 +35,34 @@ export class AppComponent {
     }
   ];
 
-  submitForm(form: NgForm) {
-    console.log(form);
+  submitForm() {
+    this.isSubmited = true;
+    this.formData = this.form.value;
+    console.log(this.form);
     console.log('form was submitted!');
+    this.form.reset();
+  }
+
+  addRandomEmail() {
+    const randEmail = 'test@gmail.com';
+
+    // setValue перетирает все если пользователь вводил свои какие то данные
+    // this.form.setValue({
+    //   user: {
+    //     pass: '',
+    //     email: randEmail
+    //   },
+    //   country: '',
+    //   answer: ''
+    // });
+
+    // так мы заменим только поля группы user
+    this.form.form.patchValue({
+      user: {
+        pass: '',
+        email: randEmail
+      },
+    });
   }
 
   // submitForm() {

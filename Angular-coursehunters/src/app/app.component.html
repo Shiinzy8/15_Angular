@@ -4,17 +4,33 @@
 
     <div class="form-group">
       <label>Email
-        <input type="text" class="form-control" ngModel name="email">
+        <input
+          type="text"
+          class="form-control"
+          ngModel
+          name="email"
+          required
+          email
+        >
       </label>
     </div>
     <div class="form-group">
       <label>Пароль
-        <input type="password" class="form-control" ngModel name="pass">
+        <input
+          type="password"
+          class="form-control"
+          ngModel name="pass"
+          required
+        >
       </label>
     </div>
     <div class="form-group">
       <label>Выберите страну
-        <select class="form-control" ngModel name="country">
+        <select
+          class="form-control"
+          ngModel name="country"
+          required
+        >
           <option value="us">США</option>
           <option value="gr">Германия</option>
           <option value="ua">Украина</option>
@@ -23,10 +39,19 @@
     </div>
     <div class="radio" *ngFor="let ans of answers">
       <label>
-        <input type="radio" [value]="ans.type" ngModel name="answer"> {{ans.text}}
+        <input
+          type="radio"
+          [value]="ans.type"
+          ngModel name="answer"
+          required
+        > {{ans.text}}
       </label>
     </div>
-    <button class="btn btn-success" type="submit">Сохранить</button>
+    <button
+      class="btn btn-success"
+      type="submit"
+      [disabled]="!form.valid"
+    >Сохранить</button>
 
   </form>
 </div>

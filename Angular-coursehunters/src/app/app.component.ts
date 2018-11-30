@@ -24,7 +24,7 @@ export class AppComponent {
     this.form = new FormGroup({
       user: new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
-        pass: new FormControl('', Validators.required),
+        pass: new FormControl('', [Validators.required, this.checkForLength.bind(this.passLength)]),
       }),
       country: new FormControl('us'),
       answer: new FormControl('no')
@@ -59,6 +59,16 @@ export class AppComponent {
         email: randEmail
       },
     });
+  }
+
+  // должен ворзращать или ничего(если все ок) или объект{'errorCode': true}
+  checkForLength(control: FormControl) {
+    if (control.value.length <= this.passLength) {
+      return {
+        'lengthError': true,
+      };
+    }
+    return null;
   }
 
   // submitForm() {

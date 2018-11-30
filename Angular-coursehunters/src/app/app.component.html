@@ -8,7 +8,19 @@
         <label>Email
           <input type="text" class="form-control" formControlName="email">
         </label>
-        <p *ngIf="form.get('user.email').invalid && form.get('user.email').touched">The email mustn't be empty</p>
+        <p
+          *ngIf="form.get('user.email').invalid && form.get('user.email').touched"
+        >
+          <span *ngIf="form.get('user.email').getError('required')">
+            The email mustn't be empty
+          </span>
+          <span *ngIf="form.get('user.email').getError('email')">
+            Please insert correct email address
+          </span>
+          <span *ngIf="form.get('user.email').getError('emailIsUsed')">
+            This email is already in use
+          </span>
+        </p>
       </div>
       <div class="form-group" [ngClass]="{'has-error': form.get('user.pass').invalid && form.get('user.pass').touched}">
         <label>Пароль

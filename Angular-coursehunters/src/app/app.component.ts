@@ -23,7 +23,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.form = new FormGroup({
       user: new FormGroup({
-        email: new FormControl('', [Validators.required, Validators.email]),
+        email: new FormControl('', [Validators.required, Validators.email], this.checkForEmail),
         pass: new FormControl('', [Validators.required, this.checkForLength.bind(this.passLength)]),
       }),
       country: new FormControl('us'),
@@ -69,6 +69,25 @@ export class AppComponent {
       };
     }
     return null;
+  }
+
+  // вернуть объект Promise любого типа
+  checkForEmail(control: FormControl): Promise<any> {
+    return new Promise((resolve, reject) => {
+      // здесь пишем наш асинхронный код
+      setTimeout(() => {
+        // этот код сработает через 3 секунды
+        if (control.value === 'test@mail.ru') {
+          // есил имейл совпал с тестовым то возвращаем ошибку
+          resolve({
+            'emailIsUsed': true,
+          });
+        } else {
+          // ошибки нет вернуть null
+          resolve(null);
+        }
+      }, 3000);
+    });
   }
 
   // submitForm() {

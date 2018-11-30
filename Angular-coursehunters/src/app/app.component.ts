@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {FormControl, FormGroup, NgForm} from '@angular/forms';
+import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -22,8 +22,8 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl(''),
-      pass: new FormControl(''),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      pass: new FormControl('', Validators.required),
       country: new FormControl('us'),
       answer: new FormControl('no')
     });

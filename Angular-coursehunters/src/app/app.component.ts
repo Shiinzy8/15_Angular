@@ -1,5 +1,5 @@
-import {Component, ViewChild} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {FormControl, FormGroup, NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -20,20 +20,14 @@ export class AppComponent {
   defaultAnswer = 'no';
   defaultCountry = 'us';
 
-  formData = {}; // empty object
-  isSubmited = false;
-
-  // @ViewChild('form') form: NgForm;
-  answers = [
-    {
-      type: 'yes',
-      text: 'Yes'
-    },
-    {
-      type: 'no',
-      text: 'No'
-    }
-  ];
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      email: new FormControl(''),
+      pass: new FormControl(''),
+      country: new FormControl('us'),
+      answer: new FormControl('no')
+    });
+  }
 
   submitForm() {
     this.isSubmited = true;

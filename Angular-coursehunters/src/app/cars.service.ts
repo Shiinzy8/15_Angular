@@ -3,10 +3,11 @@ import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class CarsService {
+  url = 'http://localhost:3000/cars';
   constructor(private http: HttpClient) {}
 
   getCars() {
-    return this.http.get('http://localhost:3000/cars'); // возвращает обсербавал объект или стреам
+    return this.http.get(this.url); // возвращает обсербавал объект или стреам
   }
 
   addCar(carName: string) {
@@ -14,6 +15,11 @@ export class CarsService {
       name: carName,
       color: 'blue'
     };
-    return this.http.post('http://localhost:3000/cars', data);
+    return this.http.post(this.url, data);
+  }
+
+  changeColor(car: any, color: string) {
+    car.color = color;
+    return this.http.put(this.url + `/${car.id}`, car);
   }
 }

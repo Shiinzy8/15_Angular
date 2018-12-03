@@ -14,6 +14,7 @@ interface Cars {
 
 export class AppComponent implements OnInit {
   cars: Cars[]  = [];
+  carName = '';
 
   constructor(private carsService: CarsService) {}
 
@@ -28,5 +29,16 @@ export class AppComponent implements OnInit {
           // console.log(data);
           this.cars = cars;
         });
+  }
+
+  addCar() {
+    this.carsService
+      .addCar(this.carName)
+      .subscribe(
+        (car: Cars) => {
+          // console.log(car);
+        this.cars.push(car);
+      });
+    this.carName = '';
   }
 }

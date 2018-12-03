@@ -1,4 +1,10 @@
 <div class="col-md-6 offset-md-3">
+  <input type="text" class="form-control" [(ngModel)]="carName">
+  <hr>
+  <button class="btn btn-primary" (click)="addCar()">
+    Add car
+  </button>
+  <hr>
   <button class="btn btn-primary" (click)="loadCars()">
     Load car
   </button>

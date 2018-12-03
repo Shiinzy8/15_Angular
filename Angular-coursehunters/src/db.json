@@ -7,8 +7,13 @@
     },
     {
       "name": "BMW",
-      "color": "Black",
+      "color": "blue",
       "id": 2
+    },
+    {
+      "name": "Mazda",
+      "color": "blue",
+      "id": 3
     }
   ]
 }

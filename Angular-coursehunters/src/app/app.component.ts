@@ -4,7 +4,7 @@ import {CarsService} from './cars.service';
 interface Cars {
   name: string;
   color: string;
-  number: number;
+  id: number;
 }
 
 @Component({
@@ -55,5 +55,15 @@ export class AppComponent implements OnInit {
       (data) => {
         console.log(data);
       });
+  }
+
+  deleteCar(car: Cars) {
+    this.carsService
+      .deleteCar(car)
+      .subscribe(
+        (data) => {
+          this.cars = this.cars.filter(c => c.id !== car.id);
+          console.log(this.cars);
+        });
   }
 }

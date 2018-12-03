@@ -1,24 +1,19 @@
 {
   "cars": [
     {
-      "name": "Ford",
-      "color": "grey",
-      "id": 1
-    },
-    {
-      "name": "BMW",
-      "color": "blue",
-      "id": 2
-    },
-    {
       "name": "Mazda",
       "color": "green",
       "id": 3
     },
     {
-      "name": "Audi",
-      "color": "yellow",
+      "name": "BMW",
+      "color": "blue",
       "id": 4
+    },
+    {
+      "name": "Audi",
+      "color": "blue",
+      "id": 5
     }
   ]
 }

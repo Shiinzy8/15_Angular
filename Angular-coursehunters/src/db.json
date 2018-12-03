@@ -4,6 +4,11 @@
       "name": "Ford",
       "color": "White",
       "id": 1
+    },
+    {
+      "name": "BMW",
+      "color": "Black",
+      "id": 2
     }
   ]
 }

@@ -1,11 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CarsService} from './cars.service';
 
-interface Cars {
-  name: string;
-  color: string;
-  id: number;
-}
+import {Cars} from './cars.type';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +12,7 @@ export class AppComponent implements OnInit {
   cars: Cars[]  = [];
   carName = '';
   colors = ['red', 'blue', 'green', 'pink', 'yellow', 'grey'];
+  error: any;
 
   constructor(private carsService: CarsService) {}
 
@@ -24,12 +21,13 @@ export class AppComponent implements OnInit {
   loadCars() {
     // subscribe of HTTPClient возвращает json data
     this.carsService
-      .getCars()
+      .loadCars()
       .subscribe(
-        (cars: Cars[]) => {
-          // console.log(data);
-          this.cars = cars;
-        });
+        cars => this.cars = cars, // первый callback function ответ от сервера
+        error => { this.error = error.message; console.log(error); alert(error); console.clear(); }
+        // второй callback для обработки ошибки
+        // третий callback выполнится после выполнения всего
+        );
   }
 
   addCar() {

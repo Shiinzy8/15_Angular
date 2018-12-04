@@ -1,4 +1,7 @@
 {
+  "title": {
+    "value": "Car manager"
+  },
   "cars": [
     {
       "name": "Mazda",

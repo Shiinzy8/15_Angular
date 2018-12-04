@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CarsService} from './cars.service';
-
 import {Cars} from './cars.type';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,16 +9,24 @@ import {Cars} from './cars.type';
 })
 
 export class AppComponent implements OnInit {
-  cars: Cars[]  = [];
+  // cars: Observable<Cars[]>;
+  cars: any;
   carName = '';
+  appTitle;
   colors = ['red', 'blue', 'green', 'pink', 'yellow', 'grey'];
   error: any;
 
   constructor(private carsService: CarsService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.appTitle = this.carsService.getAppTitle();
+  }
 
   loadCars() {
+    this.cars = this.carsService.loadCars();
+  }
+
+  loadCarsOld() {
     // subscribe of HTTPClient возвращает json data
     this.carsService
       .loadCars()

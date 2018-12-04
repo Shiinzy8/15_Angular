@@ -1,14 +1,24 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-
 import {Cars} from './cars.type';
-import {map, catchError} from 'rxjs/operators';
+import {Title} from './title.type';
+
+import {map, delay, catchError, } from 'rxjs/operators';
+
 
 @Injectable()
 export class CarsService {
-  url = 'http://localhost:3000/cars';
+  urlCars = 'http://localhost:3000/cars';
+  urlTitle = 'http://localhost:3000/title';
   constructor(private http: HttpClient) {}
+
+  getAppTitle() {
+    return this.http.get(this.urlTitle).pipe(
+      delay(3000),
+      map((response: Title) => response.value)
+    );
+  }
 
   loadCars(): Observable<Cars[]> {
     const requestOptions = {
@@ -17,7 +27,8 @@ export class CarsService {
       }),
     };
 
-    const getObject = this.http.get<Cars[]>('http://localhost:30001/cars', requestOptions);
+    // const getObject = this.http.get<Cars[]>('http://localhost:30001/cars', requestOptions); // для теста ошибок
+    const getObject = this.http.get<Cars[]>(this.urlCars, requestOptions);
     console.log(typeof getObject);
 
     return getObject.pipe(
@@ -37,10 +48,6 @@ export class CarsService {
       ; // возвращает обсербавал объект или стреам
   }
 
-  errorHandler(error: HttpErrorResponse) {
-    return Observable.throw(error.message);
-  }
-
   addCar(carName: string) {
     const requestOptions = {
       headers: new HttpHeaders({
@@ -52,15 +59,15 @@ export class CarsService {
       name: carName,
       color: 'blue'
     };
-    return this.http.post(this.url, data, requestOptions);
+    return this.http.post(this.urlCars, data, requestOptions);
   }
 
   changeColor(car: any, color: string) {
     car.color = color;
-    return this.http.put(this.url + `/${car.id}`, car);
+    return this.http.put(this.urlCars + `/${car.id}`, car);
   }
 
   deleteCar(car: any) {
-    return this.http.delete(this.url + `/${car.id}`);
+    return this.http.delete(this.urlCars + `/${car.id}`);
   }
 }
